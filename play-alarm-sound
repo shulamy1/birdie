@@ -2,13 +2,26 @@
 
 import gi
 gi.require_version('Gst', '1.0')
-from gi.repository import GObject, Gst, GLib
+from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
 
-soundfile = '/usr/share/birdie/splashes.ogg'
+{
+  GtkWidget *button;
+
+  button = gtk_file_chooser_button_new (_("Select a file"),
+                                        GTK_FILE_CHOOSER_ACTION_OPEN);
+  soundfile*
+  gtk_file_chooser_get_file (
+    GtkFileChooser* chooser
+  )
+  
+}
+
+
+#soundfile = '/usr/share/birdie/splashes.ogg'
 volume = 0
-volume_increment = 0.03
+volume_increment = 0.01
 
 Gst.init(None)
 mainloop = GLib.MainLoop()
