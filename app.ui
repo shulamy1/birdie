@@ -184,8 +184,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="max-length">2</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible-char">●</property>
                     <property name="width-chars">2</property>
                     <property name="max-width-chars">2</property>
                     <property name="input-purpose">digits</property>
@@ -219,8 +217,6 @@
                   <object class="GtkSpinButton" id="minute">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="visibility">False</property>
-                    <property name="invisible-char">●</property>
                     <property name="width-chars">2</property>
                     <property name="max-width-chars">2</property>
                     <property name="progress-pulse-step">1</property>
