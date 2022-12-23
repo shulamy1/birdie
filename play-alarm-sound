@@ -6,22 +6,22 @@ from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
 
-{
-  GtkWidget *button;
-
-  button = gtk_file_chooser_button_new (_("Select a file"),
-                                        GTK_FILE_CHOOSER_ACTION_OPEN);
-  soundfile*
-  gtk_file_chooser_get_file (
-    GtkFileChooser* chooser
-  )
-  
-}
-
-
-#soundfile = '/usr/share/birdie/splashes.ogg'
+soundfile = '/usr/share/birdie/splashes.ogg'
 volume = 0
 volume_increment = 0.01
+
+def on_file_choose(filechooserbutton)
+    soundfile = filechooserbutton.get_filename()
+    if chooser.run() == gtk.RESPONSE_OK:
+            soundfile = chooser.get_filename()
+            chooser.destroy()
+            self.open_file(filename)
+        else:
+            chooser.destroy()    
+filechooserbutton = Gtk.FileChooserButton(title="Select Sound File" ,
+                                                 action=gtk.FILE_CHOOSER_ACTION_OPEN,)
+filechooserbutton.connect("file-set", on_file_choose)
+
 
 Gst.init(None)
 mainloop = GLib.MainLoop()
