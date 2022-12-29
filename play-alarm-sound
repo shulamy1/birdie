@@ -10,19 +10,6 @@ soundfile = '/usr/share/birdie/splashes.ogg'
 volume = 0
 volume_increment = 0.01
 
-def on_file_choose(filechooserbutton)
-    soundfile = filechooserbutton.get_filename()
-    if chooser.run() == gtk.RESPONSE_OK:
-            soundfile = chooser.get_filename()
-            chooser.destroy()
-            self.open_file(filename)
-        else:
-            chooser.destroy()    
-filechooserbutton = Gtk.FileChooserButton(title="Select Sound File" ,
-                                                 action=gtk.FILE_CHOOSER_ACTION_OPEN,)
-filechooserbutton.connect("file-set", on_file_choose)
-
-
 Gst.init(None)
 mainloop = GLib.MainLoop()
 
@@ -31,6 +18,10 @@ pl.set_property('uri','file://'+os.path.abspath(soundfile))
 pl.set_property('volume', volume)
 pl.set_state(Gst.State.PLAYING)
 
+def file_changed(filechooserbutton):
+    soundfile = filechooserbutton.get_filename()
+    filechooserbutton.destroy()
+    
 def increase_volume():
     global volume
     volume = 1.0 if volume + volume_increment >= 1 else volume + volume_increment
