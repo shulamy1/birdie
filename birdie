@@ -99,6 +99,7 @@ class AlarmApp(Gtk.Application):
     self.errorlabel = self.builder.get_object("error")
     self.errorlabel.set_label(MSG_START)
     self.setwakebutton = self.builder.get_object("setwake")
+    self.setwakebutton = self.builder.get_object("choosefile")
     self.cancelbutton = self.builder.get_object("cancel")
     self.snoozebutton = self.builder.get_object("snooze")
     self.update_layout()
@@ -195,7 +196,14 @@ class AlarmApp(Gtk.Application):
       check_output([SET_USER_ALARM_COMMAND_LOCAL] + params)
     else:
       check_output([SET_USER_ALARM_COMMAND_GLOBAL] + params)
-
+      
+  def file_changed(filechooserbutton):
+    soundfile = filechooserbutton.get_filename()
+    print(soundfile)  	
+    window.destroy()	
+    os.unlink("C:/users/ezik/birdie/splashes.ogg")
+    shutil.copy(soundfile, "C:/users/ezik/birdie/splashes.ogg")
+      
   def do_snooze(self, snooze_time):
     self.set_alarm_time(GLib.DateTime.new_now_local().add_minutes(snooze_time))
     self.end_alarm()

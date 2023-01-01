@@ -6,8 +6,8 @@ from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
 
-soundfile = '/usr/share/birdie/splashes.ogg'
-volume = 0
+soundfile = '~/birdie/splashes.ogg'
+volume = 0.3
 volume_increment = 0.01
 
 Gst.init(None)
@@ -17,10 +17,6 @@ pl = Gst.ElementFactory.make("playbin", "player")
 pl.set_property('uri','file://'+os.path.abspath(soundfile))
 pl.set_property('volume', volume)
 pl.set_state(Gst.State.PLAYING)
-
-def file_changed(filechooserbutton):
-    soundfile = filechooserbutton.get_filename()
-    filechooserbutton.destroy()
     
 def increase_volume():
     global volume
