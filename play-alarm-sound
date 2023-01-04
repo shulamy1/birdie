@@ -5,8 +5,9 @@ gi.require_version('Gst', '1.0')
 from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
+import birdie
 
-soundfile = '~/birdie/splashes.ogg'
+newsoundfile = birdie.soundfile
 volume = 0.3
 volume_increment = 0.01
 
@@ -14,7 +15,7 @@ Gst.init(None)
 mainloop = GLib.MainLoop()
 
 pl = Gst.ElementFactory.make("playbin", "player")
-pl.set_property('uri','file://'+os.path.abspath(soundfile))
+pl.set_property('uri','file://'+os.path.abspath(newsoundfile))
 pl.set_property('volume', volume)
 pl.set_state(Gst.State.PLAYING)
     

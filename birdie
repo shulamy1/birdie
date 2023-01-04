@@ -197,12 +197,12 @@ class AlarmApp(Gtk.Application):
     else:
       check_output([SET_USER_ALARM_COMMAND_GLOBAL] + params)
       
-  def file_changed(filechooserbutton):
-    soundfile = filechooserbutton.get_filename()
-    print(soundfile)  	
+  def on_file_choose(filechooserbutton):
+    global soundfile = filechooserbutton.get_filename()
+"    print(soundfile)  	
     window.destroy()	
-    os.unlink("C:/users/ezik/birdie/splashes.ogg")
-    shutil.copy(soundfile, "C:/users/ezik/birdie/splashes.ogg")
+"    os.unlink("C:/users/ezik/birdie/splashes.ogg")
+"    shutil.copy(soundfile, "C:/users/ezik/birdie/splashes.ogg")
       
   def do_snooze(self, snooze_time):
     self.set_alarm_time(GLib.DateTime.new_now_local().add_minutes(snooze_time))

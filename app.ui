@@ -541,6 +541,9 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <signal name="clicked" handler="stop_clicked" swapped="no"/>
+                <style>
+                  <class name="destructive-action"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">True</property>
