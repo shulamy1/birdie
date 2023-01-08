@@ -198,7 +198,8 @@ class AlarmApp(Gtk.Application):
       check_output([SET_USER_ALARM_COMMAND_GLOBAL] + params)
       
   def on_file_choose(filechooserbutton):
-    global soundfile = filechooserbutton.get_filename()
+    global soundfile
+    soundfile = filechooserbutton.get_filename()
     #print(soundfile)  	
     window.destroy()	
     #os.unlink("C:/users/ezik/birdie/splashes.ogg")
