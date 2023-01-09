@@ -99,7 +99,7 @@ class AlarmApp(Gtk.Application):
     self.errorlabel = self.builder.get_object("error")
     self.errorlabel.set_label(MSG_START)
     self.setwakebutton = self.builder.get_object("setwake")
-    self.setwakebutton = self.builder.get_object("choosefile")
+    self.filechooserbutton = self.builder.get_object("choosefile")
     self.cancelbutton = self.builder.get_object("cancel")
     self.snoozebutton = self.builder.get_object("snooze")
     self.update_layout()
