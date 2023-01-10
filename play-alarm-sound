@@ -6,8 +6,13 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
-sys.path.append(/usr/bin)
-import birdie
+import importlib.machinery
+import importlib.util
+
+loader = importlib.machinery.SourceFileLoader( 'birdie', '/usr/bin/birdie' )
+spec = importlib.util.spec_from_loader( 'birdie', loader )
+birdie = importlib.util.module_from_spec( spec )
+loader.exec_module( birdie )
 
 newsoundfile = birdie.soundfile
 volume = 0.3
