@@ -197,13 +197,11 @@ class AlarmApp(Gtk.Application):
     else:
       check_output([SET_USER_ALARM_COMMAND_GLOBAL] + params)
       
-  def on_file_choose(filechooserbutton):
+  def on_file_choose(self,filechooserbutton):
     global soundfile
-    soundfile = filechooserbutton.get_filename()
-    #print(soundfile)  	
+    soundfile = filechooserbutton.get_filename() 	
     window.destroy()	
-    #os.unlink("C:/users/ezik/birdie/splashes.ogg")
-    #shutil.copy(soundfile, "C:/users/ezik/birdie/splashes.ogg")
+    return soundfile
       
   def do_snooze(self, snooze_time):
     self.set_alarm_time(GLib.DateTime.new_now_local().add_minutes(snooze_time))
@@ -264,7 +262,7 @@ class AlarmApp(Gtk.Application):
         except Exception as e:
           print(e)
       print("Spawning alarm sound app")
-      self.alarm_proc = Popen((INHIBIT_COMMAND_PREFIX if USE_INHIBIT else []) + ALARM_SOUND_COMMAND)
+      self.alarm_proc = Popen((INHIBIT_COMMAND_PREFIX if USE_INHIBIT else []) + ALARM_SOUND_COMMAND , soundfile)
       self.errorlabel.set_label(MSG_WAKE_UP)
       self.lefttime.set_label(MSG_NO_TIME_LEFT)
       if self.event_handler:

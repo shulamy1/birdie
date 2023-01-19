@@ -6,15 +6,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gst, GLib, Gtk
 import sys
 import os
-import importlib.machinery
-import importlib.util
 
-loader = importlib.machinery.SourceFileLoader( 'birdie', '/usr/bin/birdie' )
-spec = importlib.util.spec_from_loader( 'birdie', loader )
-birdie = importlib.util.module_from_spec( spec )
-loader.exec_module( birdie )
-
-newsoundfile = birdie.soundfile
 volume = 0.3
 volume_increment = 0.01
 
@@ -22,7 +14,7 @@ Gst.init(None)
 mainloop = GLib.MainLoop()
 
 pl = Gst.ElementFactory.make("playbin", "player")
-pl.set_property('uri','file://'+os.path.abspath(newsoundfile))
+pl.set_property('uri','file://'+os.path.abspath(soundfile))
 pl.set_property('volume', volume)
 pl.set_state(Gst.State.PLAYING)
     
